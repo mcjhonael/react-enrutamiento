@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./screens/home/Home";
+import Pos from "./screens/pos/Pos";
+import Platos from "./screens/platos/Platos";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <header>
+          <nav>
+            <ul>
+              <li>
+                <Link to='/'>Inicio</Link>
+              </li>
+              <li>
+                <Link to='/pos'>Punto de Venta</Link>
+              </li>
+              <li>
+                <Link to='/platos'>Lista de platos</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route  path='/pos'>
+            <Pos />
+          </Route>
+          <Route path='/platos'>
+            <Platos />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
